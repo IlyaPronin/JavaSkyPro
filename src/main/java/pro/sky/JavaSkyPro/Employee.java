@@ -21,15 +21,14 @@ public class Employee {
         this.employeeLastName = employeeLastName;
 
 
-
     }
-
 
 
     @Override
     public String toString() {
-        return  employeeName +" "+ employeeLastName;
+        return employeeName + " " + employeeLastName;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
