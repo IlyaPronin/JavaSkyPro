@@ -17,22 +17,22 @@ public class EmployeeService {
 //            2. Удалить сотрудника.
 //            3. Найти сотрудника.
 
-    private static final int SIZE= 5;
+    private static final int SIZE = 5;
     private final List<Employee> employees = new ArrayList<>(SIZE);
 
     public Employee add(String employeeName, String employeeLastName) {
         Employee employee = new Employee(employeeName, employeeLastName);
         if (employees.size() < SIZE) {
             for (Employee empl : employees) {
-                if (empl.equals(employee)){
+                if (empl.equals(employee)) {
                     throw new EmployeeAlreadyAddedException();
+                }
             }
+            employees.add(employee);
+            return employee;
         }
-        employees.add(employee);
-        return employee;
+        throw new EmployeeStorageIsFullException();
     }
-            throw new EmployeeStorageIsFullException();
-        }
 
 
     public Employee find(String employeeName, String employeeLastName) {
@@ -44,11 +44,12 @@ public class EmployeeService {
         }
         throw new EmployeeNotFoundException();
     }
+
     public Employee remove(String employeeName, String employeeLastName) {
         Employee employee = new Employee(employeeName, employeeLastName);
-          if (employees.remove(employees)) {
-               return employee;
-            }
+        if (employees.remove(employees)) {
+            return employee;
+        }
 
         throw new EmployeeNotFoundException();
     }

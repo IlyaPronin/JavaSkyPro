@@ -10,26 +10,31 @@ import pro.sky.JavaSkyPro.EmployeeService;
 import java.util.List;
 
 @RestController
-@RequestMapping ("/employee")
+@RequestMapping("/employee")
 public class EmployeeController {
     private final EmployeeService employeeService;
+
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
 
-   @GetMapping("/add")
-    public Employee add(@RequestParam String employeeName, @RequestParam String employeeLastName){
-return employeeService.add(employeeName,employeeLastName);
-   }
-    @GetMapping("/remove")
-    public Employee remove(@RequestParam String employeeName, @RequestParam String employeeLastName){
-        return employeeService.remove(employeeName,employeeLastName);
-    }@GetMapping("/find")
-    public Employee find(@RequestParam String employeeName, @RequestParam String employeeLastName){
-        return employeeService.find(employeeName,employeeLastName);
+    @GetMapping("/add")
+    public Employee add(@RequestParam String employeeName, @RequestParam String employeeLastName) {
+        return employeeService.add(employeeName, employeeLastName);
     }
+
+    @GetMapping("/remove")
+    public Employee remove(@RequestParam String employeeName, @RequestParam String employeeLastName) {
+        return employeeService.remove(employeeName, employeeLastName);
+    }
+
+    @GetMapping("/find")
+    public Employee find(@RequestParam String employeeName, @RequestParam String employeeLastName) {
+        return employeeService.find(employeeName, employeeLastName);
+    }
+
     @GetMapping("/")
-    public List<Employee> list(){
+    public List<Employee> list() {
         return employeeService.list();
     }
 }
